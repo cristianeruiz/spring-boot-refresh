@@ -1,0 +1,35 @@
+CREATE SCHEMA `shopping_list` ;
+
+CREATE USER 'test'@'localhost' IDENTIFIED BY 'pass';
+GRANT ALL PRIVILEGES ON shopping_list.* TO 'test'@'localhost';
+
+CREATE TABLE `shopping_list`.`category` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`name` VARCHAR(100) NULL,
+PRIMARY KEY (`id`));
+
+insert into category (name) values ("fruit");
+insert into category (name) values ("vegtables");
+
+CREATE TABLE `shopping_list`.`item` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`name` VARCHAR(100) NOT NULL,
+`creation_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`modification_date` TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+`price` DECIMAL(19,2) NULL,
+`category_id` VARCHAR(45) NOT NULL,
+PRIMARY KEY (`id`));
+
+insert into item (name,modification_date,price,category_id) values ("apple",now(),0.5,1);
+insert into item (name,modification_date,price,category_id) values ("strawberry",now(),0.1,1);
+insert into item (name,modification_date,price,category_id) values ("cherry",now(),0.1,1);
+insert into item (name,modification_date,price,category_id) values ("grapefruit",now(),0.5,1);
+insert into item (name,modification_date,price,category_id) values ("lemon",now(),0.7,1);
+
+insert into item (name,modification_date,price,category_id) values ("carrot",now(),0.5,2);
+insert into item (name,modification_date,price,category_id) values ("onion",now(),0.3,2);
+insert into item (name,modification_date,price,category_id) values ("potato",now(),0.2,2);
+insert into item (name,modification_date,price,category_id) values ("green bean",now(),0.01,2);
+insert into item (name,modification_date,price,category_id) values ("corn",now(),0.6,2);
+
+

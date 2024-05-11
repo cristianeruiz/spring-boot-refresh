@@ -1,0 +1,61 @@
+usuario: root
+password: u3s@5R_k9p$7&d6*
+
+
+usuario: desarrollo1
+password: wQk3*@fTa4_Re9
+
+jdbc:mysql://localhost:3307/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL [desarrollo1 on Default schema]
+
+mysql -u USERNAME -pPASSWORD -h HOSTNAMEORIP DATABASENAME
+
+\connect --mysql -u desarrollo1 -pwQk3*@fTa4_Re9 -h localhost crud
+mysql -u desarrollo1 -pwQk3*@fTa4_Re9 -h localhost crud
+
+\connect root@localhost
+u3s@5R_k9p$7&d6*
+
+\connect desarrollo1@localhost
+wQk3*@fTa4_Re9
+
+CREATE TABLE books (
+    id int,
+    author varchar(255),
+    category varchar(255),
+    name varchar(255),
+    price varchar(255),
+    year varchar(255)
+);
+
+ALTER TABLE books DROP id;
+
+ALTER TABLE books ADD id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    ADD INDEX (id);
+
+
+CREATE TABLE `roles` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`name` VARCHAR(100) NULL,
+PRIMARY KEY (`id`));
+
+CREATE TABLE `users` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`email` VARCHAR(100) NULL,
+`password` VARCHAR(120) NULL,
+`username` VARCHAR(50) NULL,
+PRIMARY KEY (`id`));
+
+CREATE TABLE `user_roles` (
+`user_id` INT NOT NULL,
+`role_id` INT NOT NULL);
+
+
+INSERT INTO roles VALUES(1,'ROLE_USER');
+INSERT INTO roles VALUES(2,'ROLE_MODERATOR');
+INSERT INTO roles VALUES(3,'ROLE_ADMIN');
+
+INSERT INTO users (email,password,username) VALUES('correotest@gmail.com','$2y$10$5J.DZeN/RpeL8AOM2sJziusp.xgH2DexugOlD2xdm0AbrVMIJiqG2','mod');
+
+INSERT INTO user_roles VALUES(1,2);
+
+
